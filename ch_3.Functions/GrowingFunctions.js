@@ -42,7 +42,7 @@ farmInventory2(6, 100, 50);
 function farmInventory3(cows, chickens, pigs){
   console.log(`${zeroPadd(cows)} 'Cows'`);
   console.log(`${zeroPadd(chickens)} 'Chickens`);
-  console.log(`${}`);
+  console.log(`${zeroPadd(pigs)} 'Pigs'`);
 }
 
 function zeroPadd(number){
