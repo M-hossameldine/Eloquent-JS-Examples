@@ -14,4 +14,4 @@ score.visitors = 10;
 console.log(score);
 
 // This is not allowed 
-score = {visitors: 5, home: 3} // -> error: Assignment to constant variable.
+// score = {visitors: 5, home: 3} // -> error: Assignment to constant variable.
