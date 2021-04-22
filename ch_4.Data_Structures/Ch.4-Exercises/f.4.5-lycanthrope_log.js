@@ -12,7 +12,7 @@ function phi(table) {
 }
 phi([76, 9, 4, 1])
 
-// fill the correlation table for a certain event 
+// fill the 2*2 table for a certain event 
 function tableFor(event, journal) {
   let table = [0, 0, 0, 0];
   
@@ -26,6 +26,18 @@ function tableFor(event, journal) {
   return table;
 }
 
+// list event types from journal dataset 
+function journalEvent(journal) {
+  let events = [];
+  for(let entry of journal){
+    for(let event of entry.events){
+      if(!events.includes(event)){
+        events.push(event);
+      }
+    }
+  }
+  return events;
+}
 
-
+console.log(journalEvent(JOURNAL));
 
