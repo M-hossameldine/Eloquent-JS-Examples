@@ -6,7 +6,7 @@ for( eventt of j_events) {
   // do something 
 }
 
-// unshift() & shift() --> add Or remove to the start of the array
+// unshift() & shift() --> methods add Or remove to the start of the array
 /*
   * This Todo list contains 3 methods:
   *  - Add new tasks to the end of the list 
@@ -47,9 +47,11 @@ console.log(("With indexOf and optional argumentwafaa " + names.indexOf("Wafaa",
   * and returns the elements between them
   * Ths start index is inculsive
   * The end index is exclusive
+  * Negative index, indicates an offset from the end of the sequence 
 */
 
 console.log([0, 1, 2, 3, 4, 5, 6].slice(2, 6)); // -> [2, 3, 4, 5]
+console.log([0, 1, 2, 3, 4, 5, 6].slice(-2))    // -> [5, 6]
 let arr1 = [1, 2, 3];
 let arr2 = arr1;
 arr1[0]  = [3];
