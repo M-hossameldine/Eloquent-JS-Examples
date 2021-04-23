@@ -1,4 +1,4 @@
-// Array Loops
+/* Array Loops */ 
 let j_events = ["Pizza", "Swimming", "Breakfast", "Soccer"];
 
 for( eventt of j_events) {
