@@ -1,6 +1,6 @@
 // Higher Order Functions
 /*
-  * Functions that operates on other functions
+  * Functions that operate on other functions
   * ,either by taking them as arguments or by returning them
   * Higher-order functions allow us to abstract over actions, not just values
 */
@@ -12,7 +12,8 @@ function greaterThan(n) {
 }
 
 let greaterThan10 = greaterThan(10);
-console.log(greaterThan10(11)); // -> true
+console.log(greaterThan10(11));   // -> true
+console.log(greaterThan(10)(11)); // -> true
 /* ************************************************************* */
 
 
