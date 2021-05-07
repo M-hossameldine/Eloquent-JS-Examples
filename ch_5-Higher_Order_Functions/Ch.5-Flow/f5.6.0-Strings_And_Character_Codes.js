@@ -1,0 +1,38 @@
+//  ARRAY-PROTOTYPE.some( test-method )
+/*
+ * Takes a test function 
+ * and tells you whether that function returns true for any of the elements in the array
+ * "some" for some elements
+*/ 
+
+let numbers = [0, 1, 2, 3, 4];
+console.log(numbers.some( number => number > 0)); // -> true
+console.log(numbers.some( number => number < 0)); // -> false
+
+// function that is given a character code and returns the used script 
+
+function characterScript(code){
+  for(let script of SCRIPTS){
+    if(script.ranges.some( ([from, to]) => {
+      return code >= from && code < to;
+    })) {
+      return script;
+    }
+  }
+  return null;
+}
+
+// Code Units Vs. UTF-16
+/*
+ * JavaScript strings are encoded as a sequence of 16-bit numbers, these are called CODE UNITS.
+ * A Unicode character code was initially supposed to fit within suhc a unit (over 65000), not enough 
+ * So there was a need to use more momory per character ---> UTF-16 was invented 
+ * UTF-16 describes most common characters using a single 16-bit code unit 
+ * , but uses a pair of two such units for others (less common).
+ * Now we have charcters with one unit and others with two units
+ * but, with the advent of emoji, everybody has started using two-unit characters.
+ * 
+ * ** String operations and length property: 
+ * Operations of javaScript strings, such as getting their length through the length property 
+ * and accessing their content usin square brackets, deal only with code units
+ */
