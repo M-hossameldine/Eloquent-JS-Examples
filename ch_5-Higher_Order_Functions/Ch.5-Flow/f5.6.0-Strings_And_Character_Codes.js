@@ -36,3 +36,34 @@ function characterScript(code){
  * Operations of javaScript strings, such as getting their length through the length property 
  * and accessing their content usin square brackets, deal only with code units
  */
+
+// Two emoji characters, horse and shoe
+let horseShoe = "🐴👟";
+console.log(horseShoe.length); 
+// -> 4
+console.log(horseShoe[0]); 
+// -> (Invalid half-character)
+console.log(horseShoe.charCodeAt(0));
+// -> 55357 (code of the half character - 1st unit)
+console.log(horseShoe.codePointAt(0));
+// 128052 (Actual code for horse emoji)
+
+// STRING-PROTOTYPE.charCodeAt( CHAR-INDEX )
+/*
+ *gives you a code unit, not a full character code
+*/
+
+// STRING.PROTOTYPE.codePointAt( CHAR-INDEX) 
+/*
+ * Give a full Unicode character
+ * Works properly with both types of character sizes, one or two code units
+ * for / of loop also used to loop over a string, and gives the real characters not code units.
+*/ 
+
+let roseDragon = "🌹🐉";
+for (let char of roseDragon) {
+  console.log(char);
+}
+
+// -> 🌹
+// -> 🐉
