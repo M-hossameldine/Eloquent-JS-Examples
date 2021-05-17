@@ -1,6 +1,7 @@
 // Array-prototype.reduce(reduction_mehtod)
 /*
  * Sometimes aslo called fold.
+ * Combines all elements in the array into a single value
  * It builds a value be repeatedly taking a singel element from the array 
    and combining it withe the current value.
  * If the array contains at least one element, 
