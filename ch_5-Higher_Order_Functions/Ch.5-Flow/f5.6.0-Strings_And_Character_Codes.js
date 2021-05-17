@@ -1,26 +1,35 @@
 //  ARRAY-PROTOTYPE.some( test-method )
 /*
- * Takes a test function 
- * and tells you whether that function returns true for any of the elements in the array
  * "some" for some elements
+ * Method tests whether any array element matches a given predicate function
+ * returns: true | false;
 */ 
 
-let numbers = [0, 1, 2, 3, 4];
-console.log(numbers.some( number => number > 0)); // -> true
-console.log(numbers.some( number => number < 0)); // -> false
+  let numbers = [0, 1, 2, 3, 4];
+  console.log(numbers.some( number => number > 0)); // -> true
+  console.log(numbers.some( number => number < 0)); // -> false
 
-// function that is given a character code and returns the used script 
 
-function characterScript(code){
-  for(let script of SCRIPTS){
-    if(script.ranges.some( ([from, to]) => {
-      return code >= from && code < to;
-    })) {
-      return script;
-    }
+// STRING-PROTOTYPE.charCodeAt( CHAR-INDEX )
+/*
+ *gives you a code unit, not a full character code
+*/
+
+
+// STRING.PROTOTYPE.codePointAt( CHAR-INDEX) 
+/*
+ * Give a full Unicode character
+ * Works properly with both types of character sizes, one or two code units
+ * for / of loop also used to loop over a string, and gives the real characters not code units.
+*/ 
+
+  let roseDragon = "🌹🐉";
+  for (let char of roseDragon) {
+    console.log(char);
   }
-  return null;
-}
+
+  // -> 🌹
+  // -> 🐉
 
 // Code Units Vs. UTF-16
 /*
@@ -35,35 +44,29 @@ function characterScript(code){
  * ** String operations and length property: 
  * Operations of javaScript strings, such as getting their length through the length property 
  * and accessing their content usin square brackets, deal only with code units
- */
-
-// Two emoji characters, horse and shoe
-let horseShoe = "🐴👟";
-console.log(horseShoe.length); 
-// -> 4
-console.log(horseShoe[0]); 
-// -> (Invalid half-character)
-console.log(horseShoe.charCodeAt(0));
-// -> 55357 (code of the half character - 1st unit)
-console.log(horseShoe.codePointAt(0));
-// 128052 (Actual code for horse emoji)
-
-// STRING-PROTOTYPE.charCodeAt( CHAR-INDEX )
-/*
- *gives you a code unit, not a full character code
 */
 
-// STRING.PROTOTYPE.codePointAt( CHAR-INDEX) 
-/*
- * Give a full Unicode character
- * Works properly with both types of character sizes, one or two code units
- * for / of loop also used to loop over a string, and gives the real characters not code units.
-*/ 
+  // Two emoji characters, horse and shoe
+  let horseShoe = "🐴👟";
+  console.log(horseShoe.length); 
+  // -> 4
+  console.log(horseShoe[0]); 
+  // -> (Invalid half-character)
+  console.log(horseShoe.charCodeAt(0));
+  // -> 55357 (code of the half character - 1st unit)
+  console.log(horseShoe.codePointAt(0));
+  // 128052 (Actual code for horse emoji)
 
-let roseDragon = "🌹🐉";
-for (let char of roseDragon) {
-  console.log(char);
-}
 
-// -> 🌹
-// -> 🐉
+// function that is given a character code and returns the used script 
+
+  function characterScript(code){
+    for(let script of SCRIPTS){
+      if(script.ranges.some( ([from, to]) => {
+        return code >= from && code < to;
+      })) {
+        return script;
+      }
+    }
+    return null;
+  }
