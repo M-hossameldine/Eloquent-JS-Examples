@@ -13,7 +13,7 @@ rabbit.speak("Hello!")
 
 
 function speak(line) {
-  console.log(`The ${this.type} rabbit says '${line}'` );
+  console.log(`The ${this.type} rabbit says "${line}"` );
 }
 
 let whiteRabbit = {type: "white", speak}
@@ -24,12 +24,10 @@ whiteRabbit.speak('Thanks');
 hungryRabbit.speak("I wanna another carrot!");
 //  -> The hungry rabbit says "I wanna a nother carrot"
 
-function speak(line){
-  console.log(`The ${this.type} rabbit says ${line}`);
-}
+/* You can think of "this" as an extra parameter that is passed in a different way,
+ * To pass it explicitly, you can use the call() method
+ * The first parameter will be the "this" - object - value and the further arguments are treated as normal parameters.
+*/
 
-let goodRabbit = {type: 'good', speak};
-let badRabbit = {type: 'bad', speak};
-
-goodRabbit.speak('Thack you!');
-badRabbit.speak('More!')
+speak.call(hungryRabbit, "Burp!");
+// -> The hungry rabbit says "Burp!"
