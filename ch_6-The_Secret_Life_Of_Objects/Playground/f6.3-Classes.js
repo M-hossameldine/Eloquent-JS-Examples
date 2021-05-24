@@ -57,7 +57,7 @@ console.log(Object.getPrototypeOf(blackRabbit) == Rabbit.prototype);
 // -> true
 
 
-// Third approach - Explicitly (not mentioned in the book yet)
+// Third approach - Explicitly using the class notation 
 /*
  * This apporach used speacially, we you plan to use the class with anther object-oriented concepts like inheritance
 */ 
@@ -81,7 +81,7 @@ class CAR {
 let toyota = new CAR ("toyota", 1995, 198000);
 toyota.print();
 
-//  Function Approach 
+//  Function Approach for the class car
 function CreateCar (name, year, price) {
   let holder = {
     name: undefined,
