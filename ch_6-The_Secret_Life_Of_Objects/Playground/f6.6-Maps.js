@@ -25,9 +25,11 @@ console.log("mahmoud" in ages);
 console.log("toString" in ages);
 // -> true  
 
+
 // ** 1st Solution: create the object with "null" prototype
 console.log("toString" in Object.create(null));
 // -> false
+
 
 // ** 2nd Solution: Use Object.keys 
 /*
@@ -36,15 +38,16 @@ console.log("toString" in Object.create(null));
  */ 
 console.log(Object.keys({a: 20, b: 87}));
 
+
 // ** 3rd Solution: Use "hasOwnProperty" method as an alternative to the "in" operator
 /*
  * Ignores the object prototype
 */
-
 console.log("hasOwnProperty", {Ahmed: 20, Doaa: 38, Neama: 77}.hasOwnProperty("Ahmed"));
 // -> true
 console.log("hasOwnProperty", {Ahmed: 20, Doaa: 38, Neama: 77}.hasOwnProperty("toString"));
 // -> false
+
 
 // Challenge: Object porpterty names must be strings. 
 /*
