@@ -18,4 +18,18 @@ Rabbit.prototype.toString = () => {
 console.log(String(blackRabbit));
 // -> A black rabbit
 
+function E () { }
+E.prototype.display = () => { return `E is invoked`};
+
+let obj = new E();
+// console.log(obj.display());;
+// console.log(E.name)
+
+function F () { }
+F.prototype = Object.create(E.prototype);
+
+let protoBased = [new E(), new F()];
+protoBased.forEach( (msg) => console.log(msg.display()))
+
+console.log("hello");
 
