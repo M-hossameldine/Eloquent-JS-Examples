@@ -1,5 +1,4 @@
 /*
- * Content:
  - Inheritance
  - instanceof binary operator
 
