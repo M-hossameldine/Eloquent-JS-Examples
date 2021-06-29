@@ -1,3 +1,9 @@
+/*
+  - 
+  - 
+  - 
+*/
+
 // Classes
 /*
  * A class: defindes the shape of a type of object - what methods and properties it has.
@@ -46,7 +52,7 @@ console.log(blackRabbit.speak("The Black is back"));
  * Constructors (all functions) automatically get a property named prototype,
  * which by default holds a plain empty object that derives from Object.prototype.
  *********************
- * Constructor / functoin prototype Vs. Created instances prototype:
+ * Constructor / function prototype Vs. Created instances prototype:
  * The prototype of the constructor itself is Function.prototype since constructors are functions.
  * The constructor prototype property holds the prototype used for instances created through it.
  */

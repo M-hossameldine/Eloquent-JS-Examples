@@ -1,3 +1,8 @@
+/*
+  - Methods 
+  - Call() function
+*/
+
 // METHODS
 /*
  * Methods: are nothing more than properties that hold function values.

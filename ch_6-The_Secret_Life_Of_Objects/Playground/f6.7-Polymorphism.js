@@ -1,5 +1,11 @@
-// Polymorphism
+/*
+  * Links 
+  https://www.javatpoint.com/javascript-oops-polymorphism#:~:text=JavaScript%20Polymorphism,method%20on%20different%20JavaScript%20objects.
 
+  https://replit.com/@mh2repl/Polymorphism#index.js
+*/
+
+// Polymorphism
 /*
   * When a piece of code is written to work with objects that have a certain interface,
     any kind of object that happens to support this interface can be plugged into the code, 
@@ -33,3 +39,4 @@ protoBased.forEach( (msg) => console.log(msg.display()))
 
 console.log("hello");
 
+  

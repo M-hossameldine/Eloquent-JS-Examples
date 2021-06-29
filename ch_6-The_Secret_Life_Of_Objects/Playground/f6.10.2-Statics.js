@@ -1,11 +1,14 @@
-// Links
 /*
+  - Static
+  
+  * Links:
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static
 */
 
 // Static
 /*
   - The static keyword define a static method or property for a class.
+  - Static methods are methods stored in the class`s constructor, rather tahn it`s prototype 
   - Neither static methods nor properties can be called on instances of the class,
   - They are called on the class itself.
   - Static methods are often utility functions, such as functions to create or clone objects,

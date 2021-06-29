@@ -1,3 +1,9 @@
+/*
+  - Prototype
+  - Object.prototype
+  - Object.getPrototypeOf()
+  - Object.creat()
+*/
 // Prototype
 /*
  * Is another object that is used as a fallback source of properties,

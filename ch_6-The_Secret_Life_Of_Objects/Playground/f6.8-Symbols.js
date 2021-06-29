@@ -1,3 +1,11 @@
+/*
+ * Content:
+  - Symbol()
+  - Inclue Object properties in object expressions and classes
+
+*/
+
+
 // Symbols
 /*
  * datatype

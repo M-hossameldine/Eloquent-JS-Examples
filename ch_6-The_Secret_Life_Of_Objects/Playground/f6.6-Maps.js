@@ -1,3 +1,9 @@
+/*
+  - in operator
+  - hasOwnProperty()
+  - Map methods (set, get, has ...)
+*/
+
 // Maps - noun -
 /* 
  * A map (noun) is a data structure that associates values (keys) with other values.
