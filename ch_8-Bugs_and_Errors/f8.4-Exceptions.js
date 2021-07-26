@@ -6,6 +6,8 @@
   - new Error
   * Cleaning After Exceptions:
   - finally 
+  * Catching Exceptions
+  - catch specific kind of exception
 */
 /***************************************************************************/
 // Exceptions: 
@@ -96,3 +98,56 @@ function transfer2(from, amount) {
     if(process == 1) accounts[from] += amount;
   }
 }
+
+/*******************************************************************/
+// Catching Exceptions
+/*******************************************************************/
+/*
+ - When a catch body is entered, all we know is that something in our try body caused an exception. But we don't know what did or which exception it caused.
+ - JavaScript doesn't provide direct support for selectivity catching exceptions: either catching them all (by try & catch) or don't catch any. 
+ - plus, the catch block in the next example completely ignores its exception value(e), assuming it knows what the problem is...   
+ - As a general rule: don't blanket-catch exception unless it is for the purpose of "routing" them somewhere - for example, over the network to tell a nother systme that the program crashed. 
+*/
+// --> Ex.1 - catching execptions misleading massages & ignoring some cases 
+// loop till you get a valid direction 
+function looping() {
+  for(;;) {
+    try {
+      // let dir = promtDirection("where?")  // a typo!, will cause the for loop run forever 
+      let dir = promptDirection("where?") // expect an exception till the user enters a valid input 
+      console.log("You chose", dir);
+      break;
+     } catch(e) {
+       console.log("Not a valid direction!, please try again.");
+      //  the catch should have included action for all kinds of errors -> e 
+     }
+  }
+}
+
+// --> Ex.2 - To catch specific kind of exception 
+// InputError to distinguish some exceptions
+class InputError extends Error {}
+
+function promptDir (question) {
+  let result = prompt(question);
+  if(result.toLowerCase() == "right") return "R";
+  if(result.toLowerCase() == "left")  return "L";
+  throw new InputError("Wrong direction:", result);
+}
+
+function goodLooping () {
+  for(;;) {
+    try {
+      let dir = promptDir("Where?");
+      console.log("Welcom to", dir);
+      break;
+    } catch (e) {
+      if( e instanceof InputError ) { 
+        console.log("Not a valid directoin, try agian!");
+      } else {
+        throw e;
+      }
+    }
+  }
+}
+
