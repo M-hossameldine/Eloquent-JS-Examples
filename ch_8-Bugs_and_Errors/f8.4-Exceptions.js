@@ -8,6 +8,7 @@
   - finally 
   * Catching Exceptions
   - catch specific kind of exception
+  * Assertions
 */
 /***************************************************************************/
 // Exceptions: 
@@ -151,3 +152,19 @@ function goodLooping () {
   }
 }
 
+/***************************************************************************/ 
+// Assertions:
+/***************************************************************************/ 
+/*
+ * Assertions: are checks inside a progrma that verify that something is the way it is supposed to be.
+ - not to handle normal operation situation but to find programmer mistakes
+*/
+// --> firstElement function that should never be called on empty arrays
+function firstElement(array) {
+  if(array.length == 0) {
+    throw new Error("firstElement called with empty array []")
+  }
+  return array[0];
+}
+
+// instead of returning undefined, an error message will blow up your code 
