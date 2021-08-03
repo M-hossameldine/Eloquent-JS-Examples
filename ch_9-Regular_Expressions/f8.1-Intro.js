@@ -8,9 +8,22 @@
   - test()
 * Sets of Characters
   - Square bracket []
-   - Hyphin (-)
+    - Hyphin (-)
   - Common character groups (/d, /w, /s, /D, /W, /S)
   - Caret (^) invert 
+* Repeating parts of a pattern
+  - Plus sign (+)
+  - Star (*)
+  - Question Mark (?)
+* Grouping Supexpressions
+  - Parentheses 
+  - i (lowercase & uppercase)
+* Matches & groups
+  - exec()
+    - index
+  - match() -string method-
+  * Subexpressions grouped by parentheses ('')
+    - Unmatched groups
 */
 
 /*****************************************************************/
@@ -91,5 +104,79 @@ console.log(dateTime.test("30-jan-2003 15:20"));  // -> false
 let notBinary = /[^01]/;
 console.log(notBinary.test("100011001100")); // -> false
 console.log(notBinary.test("110010102"));    // -> true
+
+/*****************************************************************/
+// Repeating parts of a pattern 
+/*****************************************************************/
+/*
+ * Plus sign (+): it indicates that the element may be repeated more than once.
+ * Star (*): allows the pattern to match zero or more than one time
+ * Question mark (?): makes part of the pattern optional, meaning it may occur zero times or one time. 
+ * Braces: to indicate that a pattern should occur a precise number of times
+  - {4}, requires it to occur 4 times
+  - {2, 4}, to specify a range
+  - {5,}, open-end, at least for a number of times
+*/
+console.log(/\d+/.test("456")); // -> true
+console.log(/\d+/.test(""));    // -> false
+
+console.log(/\d*/.test("1"));   // -> true
+console.log(/\d*/.test(""));    // -> true
+
+
+console.log(/neighbou?r/.test("neighbour")); // -> true
+console.log(/neighbou?r/.test("neighbor"));  // -> true
+
+dateTime = /\d{1,2}-\d{1,2}-\d{4} \d{1,2}:\d{2}/;
+console.log(dateTime.test("01-3-2020 8:35")); // -> true
+
+/*****************************************************************/
+// Grouping Subexpressions
+/*****************************************************************/
+/*
+ * Parentheses: to enclose (group) part of the regular expression to be counted as a signle element
+ * "i": at the end of the expression, makes the expression case sensitive (accepts both lowercase & uppercase letters) 
+*/ 
+
+let cartoonCrying = /boo+(hoo+)+/i;
+console.log(cartoonCrying.test("Booohoohooo"));    // -> true
+
+/*****************************************************************/
+// Matches & Groups
+/*****************************************************************/
+/*
+ * exec(): execute method that will return null if no match was found and return an object with no information about the match otherwise.
+    - index property: the object returned from the "exec" has an index property that tells us where in the string the successful match begins.
+ * match()-string method-: method used with string values that behaves similarly to the exec() method.
+
+ * Subexpressions grouped with parentheses
+    - the text that matched those groups will show up in the array.
+    - The whole match will be the 1st element,
+    - the next element is the part matched by the first group , then the 2nd group, and so on.
+
+    * Unmatched groups (ex: followed by ?), 
+    will be given undefined value in the array
+
+*/
+console.log('currnet line');
+let match = /\d+/.exec("12");
+console.log(match); // -> ['12', index: 0, input: '12', groups: undefined]
+console.log(match.index);  // -> 0
+
+console.log("one two 150".match(/\d+/)); // -> ['150', index: 8, input: 'one two 150', groups: undefined];
+
+// Subexpressions grouped with parentheses
+let quotedText = /'([^']*)' \w/;
+console.log(quotedText.exec("He said 'yes' directly but she said 'No' after a while "));
+// -> [ "'yes' d", 'yes', index: 8, input: "He said ....etc", groups: undefined];
+
+// Unmatched groups (ex: followed by ?), will be given undefined value in the array
+console.log(/bad(ly)?/.exec("bad"));
+// -> ['bad', undefined, input: 'bad', groups: undefined];
+console.log(/bad(ly)?/.exec("badly"));
+// -> ['badly', 'ly, input: 'badly', groups: undefined];
+/*****************************************************************/
+
+/*****************************************************************/
 /*****************************************************************/
 
