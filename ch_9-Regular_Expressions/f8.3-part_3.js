@@ -2,6 +2,8 @@
 * Word and String Boundaries
   - ^ and $ markers
   - 
+* Choice Patterns
+  - (|) Pipe character
 */
 /***************************************************************/
 // Word and String Boundaries
@@ -22,7 +24,7 @@ console.log(/^!/.test("!g"));     // -> true
 
 // string ends with "x"
 console.log(/x$/.test("tx tyx"));     // -> true
-console.log(/x$/.test("tx tyy"));    // -> false
+console.log(/x$/.test("tx tyy"));     // -> false
 
 console.log(/cat/.test("concatinate"));     // -> true
 console.log(/\bcat/.test("concatinate"));   // -> false
@@ -30,4 +32,18 @@ console.log(/\b\d{1,2}-\d{1,2}-\d{4}/.test("start 10-10-2010end"));   // -> true
 console.log(/\b\d{1,2}-\d{1,2}-\d{4}\b/.test("start 11-2-2011end"));  // -> false
 
 
+/***************************************************************/
+// Choice Patterns
+/***************************************************************/
+/*
+ * Pipe character (|): denotes a choice between the pattern to it's left and the pattern to it's right, usually used with parentheses (option|option|option ... ). 
+*/
+
+let animalCount = /\b\d+ (pig|chicken|cow)s?\b/
+console.log(animalCount.test("15 pigs"));     // -> true
+console.log(animalCount.test("6 pigscows"));  // -> false
+
+/***************************************************************/
+// 
+/***************************************************************/
 /***************************************************************/
