@@ -37,5 +37,43 @@ console.log("   ".search(/\S/));   // -> -1
 // but indexOf has an advatange of defining the startFrom index(offset) as the 2nd argument
 console.log("test test".indexOf("test", 2)); // -> 5
 /***************************************************************/
+// The lastIndex property
+/***************************************************************/
+/* 
+ * RegExp.Prototype.source propety
+  - Which contains the string that expression was creatd from, without the 2 forward slashes on both sides or the flags.
+  
+ * lastIndex property
+  - Controls, in some limited circumstances, where the next match will start:
+    . The RE must have the global (g) or sticky (y) option enabled,
+    . The match must happen through the exec or test methods 
+  - If the match was successful, the call to exec automatically updates lastIndex property to point after the match.
+  If no match was found, lastIndex is set back to zero
 
+  * Difference between the global an the sticky options:
+    - Sticky: The match will succeed only if it starts directly at lastIndex.
+    - Global: It will search ahead for a position where a match can start.
+  
+  * Problems caused by multiple exec call on a shared regular expression.
+    - The regular expression might be accidently starting at and index that was left over from a previous call.
+
+*/
+
+let pattern = /foo/ig;
+let strB = "Football is football";
+console.log(pattern.lastIndex);        // -> 0
+console.log(pattern.exec(strB).index); // -> 0
+console.log(pattern.lastIndex);        // -> 3
+console.log(pattern.exec(strB).index); // -> 12
+console.log(pattern.lastIndex);        // -> 15
+
+let global = /abc/g;
+console.log(global.exec("xyz abc")); // -> "abc"
+let sticky = /abc/y;
+console.log(sticky.exec("xyz abc")); // -> null
+
+let digit = /\d/g;
+console.log(digit.exec("here it is: 1")); // -> 1
+console.log(digit.exec("and now: 1"));    // -> null
+/******************************************* ********************/
 
