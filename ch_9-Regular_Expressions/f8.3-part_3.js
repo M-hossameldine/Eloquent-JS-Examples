@@ -1,4 +1,14 @@
-/*
+/* Links: 
+
+Anchors: Start of String and End of String Anchors
+https://www.regular-expressions.info/anchors.html
+
+The Dot
+https://www.regular-expressions.info/dot.html
+
+*/
+
+/* Content:
 * Word and String Boundaries (Anchors)
   - ^ and $ markers (String Boundary)
     - (m) Mulit-Line Mode /^regex$/m

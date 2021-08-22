@@ -1,7 +1,7 @@
 /*
 - terms
 * Creating regular Expressions
-  - RegExp
+  - RegExp consturctor
   - //
   * Forward "/" & Back "\" slashes & special characters
 * Testing for Matches
@@ -16,13 +16,13 @@
   - Star (*)
   - Question Mark (?)
 * Grouping Supexpressions
-  - Parentheses 
+  - Parentheses ()
   - i (lowercase & uppercase)
 * Matches & groups
   - exec()
     - index
   - match() -string method-
-  * Subexpressions grouped by parentheses ('')
+  * Subexpressions grouped by parentheses ()
     - Unmatched groups
 */
 
@@ -40,6 +40,8 @@
 - Regular expression is a type of object, 
 * created by:
 - RegExp constructor 
+  1st argument: the string value of the RE, 
+  2nd argument: string value of flags (i, g,..)
 - Forward slash (/): to enclose the literal value of the pattern
 */
 
@@ -77,7 +79,7 @@ console.log(/abc/.test("bc"));    // -> false
 // Sets of Characters
 /*****************************************************************/
 // square brackets: set of characters between the brackets, matches any of the characters between brackets.
-console.log(/[0123456789]/.test("in 1992")); // -> true
+console.log(/[0123456789]/.test("in 1992")); // -> true (only matched for 1 digit: 1 -> 1995)
 
 // Hyphin (-) : within square brackets, between two characters can be used to indeicate a range of characters, oredering is determined by the character's Unicode.
 console.log(/[0-9]/.test("in 1995"));        // -> true 
