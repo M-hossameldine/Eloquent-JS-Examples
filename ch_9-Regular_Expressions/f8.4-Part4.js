@@ -89,5 +89,20 @@ console.log(digit.exec("and now: 1"));    // -> null
 
 // effect of global option on match method
 console.log("Banana".match(/an/g)); // -> ['an', 'an']
-/******************************************* ********************/
+/***************************************************************/
+// Looping over matches
+/***************************************************************/
+let input = "A string with 3 numbers in it... 42 and 88.";
+let number = /\b\d+\b/g;
+let match;
+// Multiple exec calls
+while (match = number.exec(input)) {
+  // Stop looping with no matches found 
+  console.log("found", match[0], "at",match.index);
+}
+
+// -> found 3 at 14
+// -> found 42 at 33
+// -> found 88 at 40
+/***************************************************************/
 
