@@ -1,5 +1,11 @@
+/* Links:
+*Modules
+https://www.freecodecamp.org/news/javascript-modules-a-beginner-s-guide-783f7d7a5fcc/
+
+*/
 /*
 * Intro Concepts
+* Improvised Modules 
 */
 
 /*
@@ -28,3 +34,31 @@
   - and a progam (bundled with Node.js) that helps you install and manage them.
 
 */  
+
+/************************************************************************/
+// Improvised Modules
+/************************************************************************/
+/*
+* Unitl 2015, JavaScript language had no built-in module system.
+  - So developers designed their own module systems on top of the language.
+  - You can use JavaScript functions to create local scopes and objects to represent module interfaces.
+
+* (Remember: in JavaScript, functions are the only way to create new scope.)
+
+* Ex: A module for going between day names and numbers (as returned by Date's getDay method)
+  - It's interface consists of weekDay.name and weekDay.number, and hides it's local binding names inside the scope of a function expression that is immediately invoked.
+*/
+
+const weekDay = function () {
+  const names = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  return {
+    name(number) {return names[number];},
+    number(name) {return names.indexOf(name);}
+  };
+}();
+console.log(weekDay.name(4)); // -> Thursday
+console.log(weekDay.number("Friday")); // -> 5
+console.log(weekDay.name(weekDay.number("Sunday")));
+
+/************************************************************************/
+
