@@ -6,17 +6,22 @@ https://www.freecodecamp.org/news/javascript-modules-a-beginner-s-guide-783f7d7a
 /*
 * Intro Concepts
 * Improvised Modules 
+* Evaluating Data as Code
+  - eval()
+  - Function Constructor
 */
 
 /*
 * The ideal program:
   - has a crystal-clear structure.
-  - The was it works is easy to explain.
+  - The way it works is easy to explain.
   - Each part plays a well-defined role.
 
-* "Big ball of mud" is often used for large, structureless programs.
+* "Big ball of mud" term is often used for large, structureless programs.
 
-* A module: is a piece of program that specifies whick other pieces it relies on and whick functionality it provides for other modules to use (it's interface)
+* A module: is a piece of program that specifies:
+  - whick other pieces it relies on (dependencies) 
+  - and whick functionality it provides for other modules to use (it's interface)
 
 * Module interface: 
   - They make part of the module available to the outside world and keep the rest pirvate.
@@ -32,7 +37,6 @@ https://www.freecodecamp.org/news/javascript-modules-a-beginner-s-guide-783f7d7a
 * NPM is two things: 
   - an online service where one can download (and upload) packages
   - and a progam (bundled with Node.js) that helps you install and manage them.
-
 */  
 
 /************************************************************************/
@@ -59,6 +63,40 @@ const weekDay = function () {
 console.log(weekDay.name(4)); // -> Thursday
 console.log(weekDay.number("Friday")); // -> 5
 console.log(weekDay.name(weekDay.number("Sunday")));
+
+/************************************************************************/
+// Evaluating Data as Code
+/************************************************************************/
+/*
+ * There are several ways to take data (a string of code) and run it as part of the current program.
+
+  # Driect through the special operator eval()
+  - but has security issues, it breaks some properties that scopes normally have,such as it being easily predictable whick binding a given name refers to. 
+
+  # Function Constructor
+  - has less security issues than eval(), and won't do odd things with other scopes
+  - it takes two arguments: 
+    . a string containing a comma-seprated list of argument names.
+    . and a string containing the function body.
+  - Syntax:
+  new Function(arg1, ... , argN, functionBody)
+  Function(arg1, ... , argN, functionBody)  // ommit the new 
+  
+*/
+
+// eval ()
+const x = 1;
+function evalAndReturnX(code) {
+  eval(code);
+  return x;
+}
+
+console.log(evalAndReturnX("var x = 2")); // -> 2
+console.log(x); // -> 1
+
+// Function Constructor
+const plusOne = Function('n', 'return n + 1');
+console.log(plusOne(2)); // -> 3
 
 /************************************************************************/
 
