@@ -74,7 +74,8 @@ console.log(weekDay.name(weekDay.number("Sunday")));
   - but has security issues, it breaks some properties that scopes normally have,such as it being easily predictable whick binding a given name refers to. 
 
   # Function Constructor
-  - has less security issues than eval(), and won't do odd things with other scopes
+  - creates a new function object. Calling the constructor directly can create functions dynamically
+  - Suffers from security issues but less than eval(), and won't do odd things with other scopes
   - it takes two arguments: 
     . a string containing a comma-seprated list of argument names.
     . and a string containing the function body.
@@ -95,8 +96,12 @@ console.log(evalAndReturnX("var x = 2")); // -> 2
 console.log(x); // -> 1
 
 // Function Constructor
+// const plusOne = new Function('n', 'return n + 1'); before ES6
 const plusOne = Function('n', 'return n + 1');
 console.log(plusOne(2)); // -> 3
 
-/************************************************************************/
+
+
+
+
 
