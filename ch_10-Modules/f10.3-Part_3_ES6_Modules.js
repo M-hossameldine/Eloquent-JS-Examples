@@ -8,7 +8,16 @@
 * Building and Bundling
   - Bundlers 
   - Minifiers
-/*
+
+* Module Design
+  - "Ease of Use"
+  - "The ease with whick something can be composed with other code"
+  - "Stateful objects"
+  - "Defining new Data Structures"
+  * EX: on graph in Chapter 7
+    - "dijkstrajs" NPM pachage
+
+  /*
 /***************************************************/
 // ECMASCRIPT Modules
 /***************************************************/
@@ -58,4 +67,38 @@ That ES modules imports happen before a module's script starts running. This mea
   # Size of the files, determines how fast they can be transferred over the network. 
     - So we use "Minifiers": tools that take a JavaScript program and make it smaller by automatically removing comments and whitespace, renaming bindings, and replacing pieces of code with equivalent code that take up less space.
 */
+/***************************************************/
+// Module Design
+/***************************************************/
+ /*
+* "Ease of Use": one aspect of module design, if you or other developers would need to use the module in the future :
+  - The module interface should be simple and predictable.
+  - To Keep the module predictable, use simple data structures and does a single, focused thing.
+* "The ease with whick something can be composed with other code"
+  - Focused modules that compute values are applicable in a wider range of programs than bigger modules that preform complicated actions with side effects.
+
+* Stateful objects are sometimes useful or even necessary, but if something can be done with a function, "use a function"
+  - It is very common to compare stateful objects with real world objects, where the state of the objects changes over-time.
+  - Instead of making a single function call and moving on, you would have to perform the ritual of moving your object through various states, creating unnecessary interdependancies.
+
+* "Defining new data structures": only a few basic ones are provided by the language, and many types of data have to be more complex than an array or a map. But "when an array suffices, use an array".
+
+EX: on the graph in Chapter 7 
+"dijkstrajs": package uses a graph format similar to "the one used in Chapter 7", but instead of arrays, it uses objects whose property values are numbers - the weights of the edges -
+
+- So before using the package, make sure that the graph was stored in the format it expects.
+ (All edges get the same weight since our simplified model treats each road as having the same cost)
+*/
+
+const {find_path} = require("dijkstrajs");
+let graph = {};
+for (let node of Object.keys(roadGraph)) {
+  let edges = graph[node] = {};
+  for (let dest of roadGraph[node]) {
+    edges[dest] = 1;
+  }
+}
+
+console.log(find_path(graph, "Post Office", "Cabin"));
+// -> ["Post Office", "Alice's House", "Cabin"]
 /***************************************************/
